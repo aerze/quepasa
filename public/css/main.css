@@ -1,0 +1,62 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    background: #1F8DD6;
+
+}
+
+.fullpage {
+    background: #1F8DD6;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    color: white;
+    padding: 2rem;
+    padding-top: 6rem;
+}
+
+.header {
+    font-weight: 300;
+    font-size: 2.5rem;
+}
+
+.login input {
+    width: 100%;
+    color: black;
+}
+
+.login .pure-button-primary {
+    border: 1px solid white;
+    background: #1F8DD6;
+}
+
+.pull-right {
+    float: right;
+}
+
+
+@-webkit-keyframes fadeAway {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-moz-keyframes fadeAway {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-o-keyframes fadeAway {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes fadeAway {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.fade {
+  -webkit-animation: fadeAway 1s cubic-bezier(0.38,0.12,0.38,1) 0s normal forwards 1 running; /* Safari 4+ */
+  -moz-animation:    fadeAway 1s cubic-bezier(0.38,0.12,0.38,1) 0s normal forwards 1 running; /* Fx 5+ */
+  -o-animation:      fadeAway 1s cubic-bezier(0.38,0.12,0.38,1) 0s normal forwards 1 running; /* Opera 12+ */
+  animation:         fadeAway 1s cubic-bezier(0.38,0.12,0.38,1) 0s normal forwards 1 running; /* IE 10+, Fx 29+ */
+}
