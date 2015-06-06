@@ -1,7 +1,8 @@
 'use strict';
 
 var Display = {
-    login: function () {
+    loginPage: function () {
+        Display.removeFullPage();
         var fullPage = Render.div({classList: 'fullpage'});
 
         var container = Render.div({classList: 'container'});
@@ -15,9 +16,19 @@ var Display = {
         fieldset
             .add(Render.legend({text: ''}))
             .add(Render.label({for: 'email', text: 'Email'}))
-            .add(Render.input({id: 'email', type: 'email', placeholder: 'ohhhh@quePues.com'}))
+            .add(Render.input({
+                id: 'email',
+                type: 'email',
+                placeholder: 'ohhhh@quePues.com',
+                name: 'email',
+                required: true}))
             .add(Render.label({for: 'password', text: 'Password'}))
-            .add(Render.input({id: 'password', type: 'password', placeholder: 'tamales'}))
+            .add(Render.input({
+                id: 'password',
+                type: 'password',
+                placeholder: 'tamales',
+                name: 'password',
+                required: true}))
             .add(Render.button({
                 type: 'submit',
                 classList: ['pure-button', 'pure-button-primary'],
@@ -40,14 +51,14 @@ var Display = {
         fullPage
             .add(container);
 
-        Render.node(fullPage);
+        Render.fullpage(fullPage);
     },
     loginError: function (error, info) {
-        var oldErr = document.querySelector('.message');
-        if (oldErr) oldErr.remove();
+        var oldMessage = document.querySelector('.message');
+        if (oldMessage) oldMessage.remove();
 
         var container = document.querySelector('.container');
-        var errMessage = Render.p({classList: ['error', 'error-message']});
+        var errMessage = Render.p({classList: ['message', 'error-message']});
 
         switch(error.code) {
             case 'INVALID_EMAIL':
@@ -72,11 +83,11 @@ var Display = {
         container.add(errMessage);
     },
     signupError: function (error, info) {
-        var oldErr = document.querySelector('.message');
-        if (oldErr) oldErr.remove();
+        var oldMessage = document.querySelector('.message');
+        if (oldMessage) oldMessage.remove();
 
         var container = document.querySelector('.container');
-        var errMessage = Render.p({classList: ['error', 'error-message']});
+        var errMessage = Render.p({classList: ['message', 'error-message']});
 
         switch(error.code) {
             case 'INVALID_EMAIL':
@@ -101,34 +112,49 @@ var Display = {
         container.add(errMessage);
     },
     loginSuccess: function (authData) {
+        var oldMessage = document.querySelector('.message');
+        if (oldMessage) oldMessage.remove();
+
+        var container = document.querySelector('.container');
+        var message = Render.p({
+            classList: ['message', 'success-message'],
+            text: 'Yeah that\'s right, gimme a sec..'
+        });
+
         console.log(authData);
+        container.add(message);
+
+        Display.roomListPage();
     },
     signupSuccess: function (authData) {
+        var oldMessage = document.querySelector('.message');
+        if (oldMessage) oldMessage.remove();
+
+        var container = document.querySelector('.container');
+        var message = Render.p({
+            classList: ['message', 'success-message'],
+            text: 'Ok you\'re in!'
+        });
+
         console.log(authData);
+        container.add(message);
+
+        Display.roomListPage();
+    },
+
+    roomListPage: function () {
+        Display.removeFullPage();
+    },
+    removeFullPage: function () {
+        var fullpage = document.querySelector('.fullpage');
+        var container = document.querySelector('.container');
+        if (fullpage) {
+            setTimeout( function () {
+                container.classList.add('fade-out');
+                setTimeout(function () {
+                    fullpage.remove();
+                }, 2000);
+            }, 2000);
+        }
     }
 };
-
-// <form class="pure-form pure-form-stacked">
-//     <fieldset>
-//         <legend>A Stacked Form</legend>
-
-//         <label for="email">Email</label>
-//         <input id="email" type="email" placeholder="Email">
-
-//         <label for="password">Password</label>
-//         <input id="password" type="password" placeholder="Password">
-
-//         <label for="state">State</label>
-//         <select id="state">
-//             <option>AL</option>
-//             <option>CA</option>
-//             <option>IL</option>
-//         </select>
-
-//         <label for="remember" class="pure-checkbox">
-//             <input id="remember" type="checkbox"> Remember me
-//         </label>
-
-//         <button type="submit" class="pure-button pure-button-primary">Sign in</button>
-//     </fieldset>
-// </form>

@@ -1,10 +1,27 @@
 'use strict';
 
 var Render = {
-    mainNode: document.querySelector('body'),
-    node: function (node) {
-        this.mainNode.innerHTML = '';
-        this.mainNode.appendChild(node);
+    fullpage: function (node) {
+        var mainNode = document.querySelector('body');
+        var fullpage = document.querySelector('.fullpage');
+        var container = document.querySelector('.container');
+        if (fullpage) {
+            setTimeout( function () {
+                container.classList.add('fade-out');
+                setTimeout(function () {
+                    fullpage.remove();
+                    fadeInPage();
+                }, 2000);
+            }, 2000);
+        } else {
+            fadeInPage();
+        }
+
+        function fadeInPage () {
+            mainNode.innerHTML = '';
+            mainNode.appendChild(node);
+            node.classList.add('fade-in');
+        }
     },
 
     element: function (elementType, options) {
@@ -76,12 +93,10 @@ var Render = {
     input: function (options) {
         var input = this.element('input', options);
         if (options) {
-            if (options.type) {
-                input.setAttribute('type', options.type);
-            }
-            if (options.placeholder) {
-                input.setAttribute('placeholder', options.placeholder);
-            }
+            if (options.type) input.setAttribute('type', options.type);
+            if (options.placeholder) input.setAttribute('placeholder', options.placeholder);
+            if (options.name) input.setAttribute('name', options.name);
+            if (options.required) input.setAttribute('required', 'required');
         }
 
         return input;

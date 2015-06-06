@@ -3,8 +3,13 @@
 var Game = {
     loginButton: function () {
         console.log('logging in');
-
         var info = this.getInfo();
+        if (info.pass.length === 0) return;
+        else {
+            var password = document.querySelector('#password');
+            password.focus();
+            password.blur();
+        }
         var ref = new Firebase('https://aerze.firebaseio.com/');
             ref.authWithPassword({
                 email    : info.email,
@@ -15,6 +20,7 @@ var Game = {
                     Display.loginError(error, info);
                 } else {
                     console.log('Authenticated successfully with payload:', authData);
+                    Display.loginSuccess(authData);
                 }
             });
 
@@ -33,8 +39,8 @@ var Game = {
                     console.log('Error creating user:', error);
                     Display.signupError(error, info);
                 } else {
-                    console.log('Successfully created user account with uid:', userData.uid);
-                    console.log(userData);
+                    console.log('Successfully created user account with uid:', userData);
+                    Display.signupSuccess(userData);
                 }
             });
 
