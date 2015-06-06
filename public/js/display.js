@@ -2,7 +2,7 @@
 
 var Display = {
     loginPage: function () {
-        // Display.removeFullPage();
+
         var fullPage = Render.div({classList: 'fullpage'});
 
         var container = Render.div({classList: 'container'});
@@ -11,6 +11,29 @@ var Display = {
                 event.preventDefault();
                 return false;
             });
+
+        var loginButton = function () {
+            var info = this.getInfo();
+            if (info.pass.length === 0) return;
+            else {
+                var password = document.querySelector('#password');
+                password.focus();
+                password.blur();
+            }
+            Game.auth.login(info, function (err, authData, info) {
+                if (err) Display.loginError(err, info);
+                else Display.loginSuccess(authData);
+            });
+        };
+
+        var signupButton = function () {
+            var info = this.getInfo();
+            Game.auth.signup(info, function (err, userData, info) {
+                if (err) Display.signupError(err, info);
+                else Display.signupSuccess(userData);
+            });
+        };
+
         var fieldset = Render.fieldset();
 
         fieldset
@@ -33,13 +56,12 @@ var Display = {
                 type: 'submit',
                 classList: ['pure-button', 'pure-button-primary'],
                 text: 'Login',
-                onclick: Game.loginButton}))
+                onclick: loginButton}))
             .add(Render.button({
                 type: 'submit',
                 classList: ['pure-button', 'pure-button-primary', 'pull-right'],
                 text: 'Sign up',
-                onclick: Game.signupButton}));
-
+                onclick: signupButton}));
         loginForm
             .add(fieldset);
 
@@ -52,6 +74,12 @@ var Display = {
             .add(container);
 
         Render.fullpage(fullPage);
+
+        var auth = Game.auth.getAuth();
+        if (auth) {
+            Display.loginSuccess(auth);
+            return;
+        }
     },
     loginError: function (error, info) {
         var oldMessage = document.querySelector('.message');
@@ -118,13 +146,13 @@ var Display = {
         var container = document.querySelector('.container');
         var message = Render.p({
             classList: ['message', 'success-message'],
-            text: 'Yeah that\'s right, gimme a sec..'
+            text: 'Logging in'
         });
 
         console.log(authData);
         container.add(message);
 
-        Display.roomListPage();
+        Display.menuPage();
     },
     signupSuccess: function (authData) {
         var oldMessage = document.querySelector('.message');
@@ -154,16 +182,49 @@ var Display = {
         }
     },
 
-    roomListPage: function () {
-        console.log('LISTING ROOMS');
-        // Display.removeFullPage();
+    menuPage: function () {
+        console.log('Main menu');
         var fullPage = Render.div({classList: 'fullpage'});
-        var container = Render.div({classList: 'container'});
+        var container = Render.div({classList: ['container', 'menu']});
 
-        var test = Render.text('THIS IS JUST A TEST');
+        var newRoomButton = function () {
+            console.log(this);
+            console.log('Making a new room');
+        };
+
+        var logoutButton = function () {
+            console.log('Logging out');
+            Game.auth.logout();
+            Display.loginPage();
+        };
 
         container
-            .add(test);
+            .add(Render.h2({text: 'Main Menu', classList: 'header'}))
+            .add(Render.p({text: 'Play a game', classList: 'sub-header'}))
+            .add(Render.hr())
+            .add(Render.button({
+                type: '',
+                classList: ['pure-button', 'pure-button-primary'],
+                text: 'New Game Room',
+                onclick: newRoomButton}))
+            .add(Render.button({
+                type: '',
+                classList: ['pure-button', 'pure-button-primary'],
+                text: 'Find A Room',
+                onclick: newRoomButton}))
+
+            .add(Render.p({text: 'Options', classList: 'sub-header'}))
+            .add(Render.hr())
+            .add(Render.button({
+                type: '',
+                classList: ['pure-button', 'pure-button-primary'],
+                text: 'Settings',
+                onclick: newRoomButton}))
+            .add(Render.button({
+                type: '',
+                classList: ['pure-button', 'pure-button-primary'],
+                text: 'Logout',
+                onclick: logoutButton}));
 
         fullPage
             .add(container);

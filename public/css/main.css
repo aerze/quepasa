@@ -26,6 +26,11 @@ html, body {
     margin-top: 1rem;
 }
 
+.sub-header {
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+
 .login input {
     width: 100%;
     color: black;
@@ -34,6 +39,24 @@ html, body {
 .login .pure-button-primary {
     border: 1px solid white;
     background: #1F8DD6;
+}
+
+
+
+.menu .sub-header {
+    margin-bottom: 0px;
+}
+.menu hr{
+    color: white;
+    height: 1px;
+}
+.menu .pure-button-primary {
+    border: 1px solid white;
+    background: #1F8DD6;
+    width: 100%;
+    margin: 1rem 0 0 0;
+    font-weight: 400;
+    font-family: 'Oswald', sans-serif;
 }
 
 .pull-right {

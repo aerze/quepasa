@@ -55,33 +55,20 @@ var Render = {
 
         return element;
     },
-    text: function (text) {
-        return document.createTextNode(text);
-    },
 
-    div: function (options) {
-        return this.element('div', options);
-    },
-
-    h1: function (options) {
-        return this.element('h1', options);
-    },
-
-    p: function (options) {
-        return this.element('p', options);
-    },
-
-    form: function (options) {
-        return this.element('form', options);
-    },
-
-    fieldset: function (options) {
-        return this.element('fieldset', options);
-    },
-
-    legend: function (options) {
-        return this.element('legend', options);
-    },
+    p:  function (options) { return this.element('p', options); },
+    h1: function (options) { return this.element('h1', options); },
+    h2: function (options) { return this.element('h2', options); },
+    h3: function (options) { return this.element('h3', options); },
+    h4: function (options) { return this.element('h4', options); },
+    h5: function (options) { return this.element('h5', options); },
+    h6: function (options) { return this.element('h6', options); },
+    hr: function (options) { return this.element('hr', options); },
+    div:    function (options) { return this.element('div', options); },
+    text:   function (text) { return document.createTextNode(text); },
+    form:   function (options) { return this.element('form', options); },
+    legend: function (options) { return this.element('legend', options); },
+    fieldset: function (options) { return this.element('fieldset', options); },
 
     label: function (options) {
         var label = this.element('label', options);
