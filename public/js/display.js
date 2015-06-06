@@ -2,7 +2,7 @@
 
 var Display = {
     loginPage: function () {
-        Display.removeFullPage();
+        // Display.removeFullPage();
         var fullPage = Render.div({classList: 'fullpage'});
 
         var container = Render.div({classList: 'container'});
@@ -141,10 +141,6 @@ var Display = {
 
         Display.roomListPage();
     },
-
-    roomListPage: function () {
-        Display.removeFullPage();
-    },
     removeFullPage: function () {
         var fullpage = document.querySelector('.fullpage');
         var container = document.querySelector('.container');
@@ -156,5 +152,22 @@ var Display = {
                 }, 2000);
             }, 2000);
         }
+    },
+
+    roomListPage: function () {
+        console.log('LISTING ROOMS');
+        // Display.removeFullPage();
+        var fullPage = Render.div({classList: 'fullpage'});
+        var container = Render.div({classList: 'container'});
+
+        var test = Render.text('THIS IS JUST A TEST');
+
+        container
+            .add(test);
+
+        fullPage
+            .add(container);
+
+        Render.fullpage(fullPage);
     }
 };

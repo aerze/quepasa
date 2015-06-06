@@ -5,6 +5,7 @@ var Render = {
         var mainNode = document.querySelector('body');
         var fullpage = document.querySelector('.fullpage');
         var container = document.querySelector('.container');
+
         if (fullpage) {
             setTimeout( function () {
                 container.classList.add('fade-out');
@@ -54,8 +55,8 @@ var Render = {
 
         return element;
     },
-    html: function (html) {
-        this.mainNode.innerHTML = html;
+    text: function (text) {
+        return document.createTextNode(text);
     },
 
     div: function (options) {
@@ -120,6 +121,4 @@ var Render = {
         }
         return button;
     }
-//         <button type="submit" class="pure-button pure-button-primary">Sign in</button>
-
 };
