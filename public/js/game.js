@@ -12,6 +12,7 @@ var Game = {
             }, function(error, authData) {
                 if (error) {
                     console.log('Login Failed!', error);
+                    Display.loginError(error, info);
                 } else {
                     console.log('Authenticated successfully with payload:', authData);
                 }
@@ -30,6 +31,7 @@ var Game = {
             }, function(error, userData) {
                 if (error) {
                     console.log('Error creating user:', error);
+                    Display.signupError(error, info);
                 } else {
                     console.log('Successfully created user account with uid:', userData.uid);
                     console.log(userData);

@@ -1,0 +1,10 @@
+{
+    "node": true,
+    "jquery": true,
+    "globals": {
+        "Display": true,
+        "Render": true,
+        "Game": true,
+        "Firebase": true
+    }
+}

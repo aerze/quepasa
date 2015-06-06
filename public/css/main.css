@@ -36,27 +36,43 @@ html, body {
     float: right;
 }
 
+.message {
+    font-family: inherit;
+    font-size: 100%;
+    padding: 0.5em 1em;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.error-message {
+    background-color: rgba(255, 6, 6, 0.82);
+}
+.success-message {
+    background-color: green;
+}
 
 @-webkit-keyframes fadeAway {
-  0%   { opacity: 1; }
-  100% { opacity: 0; }
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
 }
 @-moz-keyframes fadeAway {
-  0%   { opacity: 1; }
-  100% { opacity: 0; }
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
 }
 @-o-keyframes fadeAway {
-  0%   { opacity: 1; }
-  100% { opacity: 0; }
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
 }
 @keyframes fadeAway {
-  0%   { opacity: 1; }
-  100% { opacity: 0; }
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 .fade {
-  -webkit-animation: fadeAway 1s cubic-bezier(0.38,0.12,0.38,1) 0s normal forwards 1 running; /* Safari 4+ */
-  -moz-animation:    fadeAway 1s cubic-bezier(0.38,0.12,0.38,1) 0s normal forwards 1 running; /* Fx 5+ */
-  -o-animation:      fadeAway 1s cubic-bezier(0.38,0.12,0.38,1) 0s normal forwards 1 running; /* Opera 12+ */
-  animation:         fadeAway 1s cubic-bezier(0.38,0.12,0.38,1) 0s normal forwards 1 running; /* IE 10+, Fx 29+ */
+    -webkit-animation: fadeAway 1s cubic-bezier(0.38,0.12,0.38,1) 0s normal forwards 1 running; /* Safari 4+ */
+    -moz-animation:    fadeAway 1s cubic-bezier(0.38,0.12,0.38,1) 0s normal forwards 1 running; /* Fx 5+ */
+    -o-animation:      fadeAway 1s cubic-bezier(0.38,0.12,0.38,1) 0s normal forwards 1 running; /* Opera 12+ */
+    animation:         fadeAway 1s cubic-bezier(0.38,0.12,0.38,1) 0s normal forwards 1 running; /* IE 10+, Fx 29+ */
 }
