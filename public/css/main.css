@@ -45,6 +45,7 @@ html, body {
 
 .menu .sub-header {
     margin-bottom: 0px;
+    border-bottom: 1px solid white;
 }
 .menu hr{
     color: white;
@@ -104,10 +105,10 @@ html, body {
 
 
 .fade-out {
-    -webkit-animation: fade-out 1s cubic-bezier(0.15, 0.43, 0.52, 0.91) 0s normal forwards 1 running; /* Safari 4+ */
-    -moz-animation:    fade-out 1s cubic-bezier(0.15, 0.43, 0.52, 0.91) 0s normal forwards 1 running; /* Fx 5+ */
-    -o-animation:      fade-out 1s cubic-bezier(0.15, 0.43, 0.52, 0.91) 0s normal forwards 1 running; /* Opera 12+ */
-    animation:         fade-out 1s cubic-bezier(0.15, 0.43, 0.52, 0.91) 0s normal forwards 1 running; /* IE 10+, Fx 29+ */
+    -webkit-animation: fade-out .5s cubic-bezier(0.15, 0.43, 0.52, 0.91) 0s normal forwards 1 running; /* Safari 4+ */
+    -moz-animation:    fade-out .5s cubic-bezier(0.15, 0.43, 0.52, 0.91) 0s normal forwards 1 running; /* Fx 5+ */
+    -o-animation:      fade-out .5s cubic-bezier(0.15, 0.43, 0.52, 0.91) 0s normal forwards 1 running; /* Opera 12+ */
+    animation:         fade-out .5s cubic-bezier(0.15, 0.43, 0.52, 0.91) 0s normal forwards 1 running; /* IE 10+, Fx 29+ */
 }
 
 @-webkit-keyframes fade-in {
@@ -144,8 +145,56 @@ html, body {
 }
 
 .fade-in {
-    -webkit-animation: fade-in 1s cubic-bezier(0.15, 0.43, 0.52, 0.91) 0s normal forwards 1 running; /* Safari 4+ */
-    -moz-animation:    fade-in 1s cubic-bezier(0.15, 0.43, 0.52, 0.91) 0s normal forwards 1 running; /* Fx 5+ */
-    -o-animation:      fade-in 1s cubic-bezier(0.15, 0.43, 0.52, 0.91) 0s normal forwards 1 running; /* Opera 12+ */
-    animation:         fade-in 1s cubic-bezier(0.15, 0.43, 0.52, 0.91) 0s normal forwards 1 running; /* IE 10+, Fx 29+ */
+    -webkit-animation: fade-in .5s cubic-bezier(0.15, 0.43, 0.52, 0.91) 0s normal forwards 1 running; /* Safari 4+ */
+    -moz-animation:    fade-in .5s cubic-bezier(0.15, 0.43, 0.52, 0.91) 0s normal forwards 1 running; /* Fx 5+ */
+    -o-animation:      fade-in .5s cubic-bezier(0.15, 0.43, 0.52, 0.91) 0s normal forwards 1 running; /* Opera 12+ */
+    animation:         fade-in .5s cubic-bezier(0.15, 0.43, 0.52, 0.91) 0s normal forwards 1 running; /* IE 10+, Fx 29+ */
+}
+
+@-webkit-keyframes flip {
+    0%   {
+        transform: rotateX(0deg) scale3d(1,1,1);
+        background: #1F8DD6;
+        color: #1F8DD6;
+    }
+    33% { transform: scale3d(.8,.8,.8); }
+    50%  { transform: rotateX(180deg); }
+    100% { transform: rotateX(360deg) scale3d(3,30,3); }
+}
+@-moz-keyframes flip {
+    0%   {
+        transform: rotateX(0deg) scale3d(1,1,1);
+        background: #1F8DD6;
+        color: #1F8DD6;
+    }
+    33% { transform: scale3d(.8,.8,.8); }
+    50%  { transform: rotateX(180deg); }
+    100% { transform: rotateX(360deg) scale3d(3,30,3); }
+}
+@-o-keyframes flip {
+   0%   {
+        transform: rotateX(0deg) scale3d(1,1,1);
+        background: #1F8DD6;
+        color: #1F8DD6;
+    }
+    33% { transform: scale3d(.8,.8,.8); }
+    50%  { transform: rotateX(180deg); }
+    100% { transform: rotateX(360deg) scale3d(3,30,3); }
+}
+@keyframes flip {
+    0%   {
+        transform: rotateX(0deg) scale3d(1,1,1);
+        background: #1F8DD6;
+    }
+    33% { transform: scale3d(.8,.8,.8); }
+    50%  { transform: rotateX(180deg); }
+    100% { transform: rotateX(360deg) scale3d(3,30,3); }
+}
+
+.flip {
+    color: #1F8DD6;
+    -webkit-animation: flip .5s ease-out 0s normal forwards 1 running; /* Safari 4+ */
+    -moz-animation:    flip .5s ease-out 0s normal forwards 1 running; /* Fx 5+ */
+    -o-animation:      flip .5s ease-out 0s normal forwards 1 running; /* Opera 12+ */
+    animation:         flip .5s ease-out 0s normal forwards 1 running; /* IE 10+, Fx 29+ */
 }

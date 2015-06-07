@@ -188,12 +188,18 @@ var Display = {
         var container = Render.div({classList: ['container', 'menu']});
 
         var newRoomButton = function () {
-            console.log(this);
-            console.log('Making a new room');
+            console.log('\t> New room menu');
+            this.classList.add('flip');
+            Display.newGamePage();
         };
-
+        var findRoomButton = function () {
+            console.log('\t> Find room menu');
+        };
+        var settingsButton = function () {
+            console.log('\t> Settings menu');
+        };
         var logoutButton = function () {
-            console.log('Logging out');
+            console.log('\t> Logging out');
             Game.auth.logout();
             Display.loginPage();
         };
@@ -201,7 +207,6 @@ var Display = {
         container
             .add(Render.h2({text: 'Main Menu', classList: 'header'}))
             .add(Render.p({text: 'Play a game', classList: 'sub-header'}))
-            .add(Render.hr())
             .add(Render.button({
                 type: '',
                 classList: ['pure-button', 'pure-button-primary'],
@@ -211,15 +216,14 @@ var Display = {
                 type: '',
                 classList: ['pure-button', 'pure-button-primary'],
                 text: 'Find A Room',
-                onclick: newRoomButton}))
+                onclick: findRoomButton}))
 
             .add(Render.p({text: 'Options', classList: 'sub-header'}))
-            .add(Render.hr())
             .add(Render.button({
                 type: '',
                 classList: ['pure-button', 'pure-button-primary'],
                 text: 'Settings',
-                onclick: newRoomButton}))
+                onclick: settingsButton}))
             .add(Render.button({
                 type: '',
                 classList: ['pure-button', 'pure-button-primary'],
@@ -229,6 +233,17 @@ var Display = {
         fullPage
             .add(container);
 
+        Render.fullpage(fullPage);
+    },
+    newGamePage: function () {
+        console.log('New Game');
+        var fullPage = Render.div({classList: 'fullpage'});
+        var container = Render.div({classList: ['container', 'menu']});
+
+        container
+            .add(Render.h2({text: 'New Game', classList: 'header'}));
+        fullPage
+            .add(container);
         Render.fullpage(fullPage);
     }
 };

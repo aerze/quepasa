@@ -12,8 +12,8 @@ var Render = {
                 setTimeout(function () {
                     fullpage.remove();
                     fadeInPage();
-                }, 2000);
-            }, 2000);
+                }, 1000);
+            }, 1000);
         } else {
             fadeInPage();
         }
